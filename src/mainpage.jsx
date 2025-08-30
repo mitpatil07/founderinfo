@@ -4,6 +4,9 @@ import { Play, Tv, Facebook, ShoppingCart, Twitter, Instagram, Linkedin, Youtube
 import marctv from "../src/assets/marktv.png"
 import projectsmile from "../src/assets/projectsmilefund.jpg"
 import projectsmilefund from "../src/assets/projectsmile.jpg"
+import book2 from "../src/assets/book2.jpg"
+import book1 from "../src/assets/bookimg.png"
+
 
 const FounderWebpage = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -29,6 +32,61 @@ const FounderWebpage = () => {
     };
   }, []);
 
+  const books = [
+    {
+      id: 1,
+      cover: book1,
+      title: "HEALING ADDICTION: A Journey to Reclaim Your Inner Child",
+      description: "This book is not just words - it is a mirror. A mirror to see your hidden pain, buried memories, and the little child inside you who is still waiting to be seen, loved, and healed.",
+      status: "available",
+      statusText: "AVAILABLE NOW",
+      statusColor: "#16a34a",
+      bgColor: "#fef7ed",
+      borderColor: "#fed7aa",
+      downloads: "0",
+      buttons: [
+        {
+          text: "Support Author",
+          type: "primary",
+          color: "#fa8229",
+          hoverColor: "#ea7520",
+          url: "https://www.paypal.com/donate/?hosted_button_id=7QRRA68W82CF4"
+        },
+        {
+          text: "Download Free",
+          type: "secondary",
+          color: "#fa8229",
+          url: "https://projectsmile.world/"
+        }
+      ]
+    },
+    {
+      id: 2,
+      cover: book2,
+      title: "THE AWAKENED ENTREPRENEUR",
+      description: "A revolutionary guide to building businesses with consciousness, purpose, and authentic success. Learn how to align your entrepreneurial journey with your soul's mission.",
+      status: "coming-soon",
+      statusText: "COMING SOON",
+      statusColor: "#f59e0b",
+      bgColor: "#f1f5f9",
+      borderColor: "#cbd5e1",
+      notification: "Get notified on release",
+      buttons: [
+        {
+          text: "Pre-Order Soon",
+          type: "primary",
+          color: "#64748b",
+          disabled: true
+        },
+        {
+          text: "Get Notified",
+          type: "secondary",
+          color: "#1c4fd8",
+          url: "https://projectsmile.world/"
+        }
+      ]
+    }
+  ];
 
   const videoId = "-zrF1dgO9Vo";
   const thumbnailUrl = `https://img.youtube.com/vi/${videoId}/maxresdefault.jpg`;
@@ -53,7 +111,6 @@ const FounderWebpage = () => {
     { icon: Twitter, url: 'https://x.com/mittiga95743', color: '#1da1f2' },
   ];
 
-  
   const platforms = [
     {
       icon: marctv,
@@ -601,343 +658,196 @@ const FounderWebpage = () => {
 
       {/* Books Section */}
       <section id="books" style={{ padding: '5rem 0', backgroundColor: '#f8fafc' }}>
-        <div style={{ maxWidth: '80rem', margin: '0 auto', padding: '0 1rem' }}>
-          <div style={{ textAlign: 'center', marginBottom: '4rem' }}>
-            <h2 style={{ 
-              fontSize: windowWidth >= 1024 ? '3.5rem' : windowWidth >= 640 ? '2.5rem' : '2rem', 
-              fontWeight: '900', 
-              color: '#111827', 
-              marginBottom: '2rem', 
-              lineHeight: '1.1'
-            }}>
-              TRANSFORMATIONAL
-              <br />
-              <span style={{
-                background: 'linear-gradient(135deg, #fa8229 0%, #ff6b35 100%)',
-                WebkitBackgroundClip: 'text',
-                WebkitTextFillColor: 'transparent',
-                backgroundClip: 'text'
-              }}>BOOKS</span>
-            </h2>
-            <p style={{ 
-              fontSize: windowWidth >= 640 ? '1.25rem' : '1rem', 
-              color: '#374151', 
-              maxWidth: '48rem', 
-              margin: '0 auto', 
-              lineHeight: '1.7'
-            }}>
-              Discover powerful insights and practical wisdom for healing, growth, and authentic success 
-              through Joe's transformational books.
-            </p>
-          </div>
-
-          <div style={{ 
-            display: 'grid', 
-            gridTemplateColumns: windowWidth >= 768 ? 'repeat(2, 1fr)' : '1fr',
-            gap: '2rem',
-            maxWidth: '64rem',
-            margin: '0 auto'
+      <div style={{ maxWidth: '80rem', margin: '0 auto', padding: '0 1rem' }}>
+        <div style={{ textAlign: 'center', marginBottom: '4rem' }}>
+          <h2 style={{ 
+            fontSize: windowWidth >= 1024 ? '3.5rem' : windowWidth >= 640 ? '2.5rem' : '2rem', 
+            fontWeight: '900', 
+            color: '#111827', 
+            marginBottom: '2rem', 
+            lineHeight: '1.1'
           }}>
-            {/* First Book - Available */}
-            <div style={{
-              backgroundColor: '#fef7ed',
-              borderRadius: '1.5rem',
-              padding: '2rem',
-              border: '1px solid #fed7aa',
-              boxShadow: '0 4px 12px rgba(0, 0, 0, 0.05)',
-              transition: 'all 0.4s cubic-bezier(0.4, 0, 0.2, 1)',
-              transform: 'translateY(0)',
-              position: 'relative',
-              overflow: 'hidden'
-            }}
-            onMouseEnter={(e) => {
-              e.currentTarget.style.boxShadow = '0 20px 40px rgba(0, 0, 0, 0.1)';
-              e.currentTarget.style.transform = 'translateY(-8px)';
-              e.currentTarget.style.borderColor = '#fa8229';
-            }}
-            onMouseLeave={(e) => {
-              e.currentTarget.style.boxShadow = '0 4px 12px rgba(0, 0, 0, 0.05)';
-              e.currentTarget.style.transform = 'translateY(0)';
-              e.currentTarget.style.borderColor = '#fed7aa';
-            }}
-            >
-              <div style={{ display: 'flex', alignItems: 'flex-start', gap: '1.5rem' }}>
-                {/* Book Cover Placeholder */}
-                <div style={{
-                  width: '120px',
-                  height: '160px',
-                  backgroundColor: '#fa8229',
-                  borderRadius: '0.75rem',
-                  flexShrink: 0,
-                  display: 'flex',
-                  alignItems: 'center',
-                  justifyContent: 'center',
-                  boxShadow: '0 8px 20px rgba(250, 130, 41, 0.3)',
-                  position: 'relative',
-                  background: 'linear-gradient(135deg, #fa8229 0%, #ff6b35 100%)'
-                }}>
-                  <div style={{
-                    color: 'white',
-                    fontSize: '0.75rem',
-                    fontWeight: '900',
-                    textAlign: 'center',
-                    padding: '1rem',
-                    lineHeight: '1.2'
-                  }}>
-                    HEALING
-                    <br />
-                    ADDICTION
-                  </div>
-                </div>
-
-                {/* Book Details */}
-                <div style={{ flex: 1 }}>
-                  <div style={{
-                    display: 'inline-block',
-                    backgroundColor: '#16a34a',
-                    color: 'white',
-                    padding: '0.25rem 0.75rem',
-                    borderRadius: '9999px',
-                    fontSize: '0.75rem',
-                    fontWeight: '700',
-                    marginBottom: '1rem'
-                  }}>
-                    AVAILABLE NOW
-                  </div>
-                  
-                  <h3 style={{ 
-                    fontSize: '1.5rem', 
-                    fontWeight: '900', 
-                    color: '#111827', 
-                    marginBottom: '1rem',
-                    margin: '0 0 1rem 0',
-                    lineHeight: '1.3'
-                  }}>
-                    HEALING ADDICTION: A Journey to Reclaim Your Inner Child
-                  </h3>
-                  
-                  <p style={{ 
-                    color: '#4b5563', 
-                    marginBottom: '1.5rem', 
-                    lineHeight: '1.6',
-                    margin: '0 0 1.5rem 0',
-                    fontSize: '0.9rem'
-                  }}>
-                    This book is not just words - it is a mirror. A mirror to see your hidden pain, buried memories, and the little child inside you who is still waiting to be seen, loved, and healed.
-                  </p>
-
-                  <div style={{ 
-                    display: 'flex', 
-                    alignItems: 'center', 
-                    gap: '0.5rem', 
-                    marginBottom: '1.5rem',
-                    fontSize: '0.875rem',
-                    color: '#6b7280'
-                  }}>
-                    <span>📥 566 Downloads</span>
-                  </div>
-                  
-                  <div style={{ display: 'flex', gap: '0.75rem', flexWrap: 'wrap' }}>
-                    <button
-                      onClick={() => handleSocialClick('https://www.paypal.com/donate/?hosted_button_id=7QRRA68W82CF4')}
-                      style={{
-                        backgroundColor: '#fa8229',
-                        color: 'white',
-                        padding: '0.75rem 1.5rem',
-                        borderRadius: '0.75rem',
-                        fontWeight: '600',
-                        border: 'none',
-                        cursor: 'pointer',
-                        transition: 'all 0.3s ease',
-                        fontSize: '0.875rem'
-                      }}
-                      onMouseEnter={(e) => {
-                        e.target.style.backgroundColor = '#ea7520';
-                        e.target.style.transform = 'translateY(-2px)';
-                      }}
-                      onMouseLeave={(e) => {
-                        e.target.style.backgroundColor = '#fa8229';
-                        e.target.style.transform = 'translateY(0)';
-                      }}
-                    >
-                      Support Author
-                    </button>
-                    <button
-                      style={{
-                        backgroundColor: 'transparent',
-                        color: '#fa8229',
-                        padding: '0.75rem 1.5rem',
-                        borderRadius: '0.75rem',
-                        fontWeight: '600',
-                        border: '2px solid #fa8229',
-                        cursor: 'pointer',
-                        transition: 'all 0.3s ease',
-                        fontSize: '0.875rem'
-                      }}
-                      onMouseEnter={(e) => {
-                        e.target.style.backgroundColor = '#fa8229';
-                        e.target.style.color = 'white';
-                      }}
-                      onMouseLeave={(e) => {
-                        e.target.style.backgroundColor = 'transparent';
-                        e.target.style.color = '#fa8229';
-                      }}
-                    >
-                      Download Free
-                    </button>
-                  </div>
-                </div>
-              </div>
-            </div>
-
-            {/* Second Book - Coming Soon */}
-            <div style={{
-              backgroundColor: '#f1f5f9',
-              borderRadius: '1.5rem',
-              padding: '2rem',
-              border: '1px solid #cbd5e1',
-              boxShadow: '0 4px 12px rgba(0, 0, 0, 0.05)',
-              transition: 'all 0.4s cubic-bezier(0.4, 0, 0.2, 1)',
-              transform: 'translateY(0)',
-              position: 'relative',
-              overflow: 'hidden'
-            }}
-            onMouseEnter={(e) => {
-              e.currentTarget.style.boxShadow = '0 20px 40px rgba(0, 0, 0, 0.1)';
-              e.currentTarget.style.transform = 'translateY(-8px)';
-              e.currentTarget.style.borderColor = '#1c4fd8';
-            }}
-            onMouseLeave={(e) => {
-              e.currentTarget.style.boxShadow = '0 4px 12px rgba(0, 0, 0, 0.05)';
-              e.currentTarget.style.transform = 'translateY(0)';
-              e.currentTarget.style.borderColor = '#cbd5e1';
-            }}
-            >
-              <div style={{ display: 'flex', alignItems: 'flex-start', gap: '1.5rem' }}>
-                {/* Book Cover Placeholder */}
-                <div style={{
-                  width: '120px',
-                  height: '160px',
-                  backgroundColor: '#1c4fd8',
-                  borderRadius: '0.75rem',
-                  flexShrink: 0,
-                  display: 'flex',
-                  alignItems: 'center',
-                  justifyContent: 'center',
-                  boxShadow: '0 8px 20px rgba(28, 79, 216, 0.3)',
-                  position: 'relative',
-                  background: 'linear-gradient(135deg, #1c4fd8 0%, #1e40af 100%)'
-                }}>
-                  <div style={{
-                    color: 'white',
-                    fontSize: '0.75rem',
-                    fontWeight: '900',
-                    textAlign: 'center',
-                    padding: '1rem',
-                    lineHeight: '1.2'
-                  }}>
-                    COMING
-                    <br />
-                    SOON
-                  </div>
-                </div>
-
-                {/* Book Details */}
-                <div style={{ flex: 1 }}>
-                  <div style={{
-                    display: 'inline-block',
-                    backgroundColor: '#f59e0b',
-                    color: 'white',
-                    padding: '0.25rem 0.75rem',
-                    borderRadius: '9999px',
-                    fontSize: '0.75rem',
-                    fontWeight: '700',
-                    marginBottom: '1rem'
-                  }}>
-                    COMING SOON
-                  </div>
-                  
-                  <h3 style={{ 
-                    fontSize: '1.5rem', 
-                    fontWeight: '900', 
-                    color: '#111827', 
-                    marginBottom: '1rem',
-                    margin: '0 0 1rem 0',
-                    lineHeight: '1.3'
-                  }}>
-                    THE AWAKENED ENTREPRENEUR
-                  </h3>
-                  
-                  <p style={{ 
-                    color: '#4b5563', 
-                    marginBottom: '1.5rem', 
-                    lineHeight: '1.6',
-                    margin: '0 0 1.5rem 0',
-                    fontSize: '0.9rem'
-                  }}>
-                    A revolutionary guide to building businesses with consciousness, purpose, and authentic success. Learn how to align your entrepreneurial journey with your soul's mission.
-                  </p>
-
-                  <div style={{ 
-                    display: 'flex', 
-                    alignItems: 'center', 
-                    gap: '0.5rem', 
-                    marginBottom: '1.5rem',
-                    fontSize: '0.875rem',
-                    color: '#6b7280'
-                  }}>
-                    <span>🔔 Get notified on release</span>
-                  </div>
-                  
-                  <div style={{ display: 'flex', gap: '0.75rem', flexWrap: 'wrap' }}>
-                    <button
-                      style={{
-                        backgroundColor: '#64748b',
-                        color: 'white',
-                        padding: '0.75rem 1.5rem',
-                        borderRadius: '0.75rem',
-                        fontWeight: '600',
-                        border: 'none',
-                        cursor: 'not-allowed',
-                        transition: 'all 0.3s ease',
-                        fontSize: '0.875rem',
-                        opacity: '0.7'
-                      }}
-                      disabled
-                    >
-                      Pre-Order Soon
-                    </button>
-                    <button
-                      onClick={() => handleSocialClick('https://projectsmile.world/')}
-                      style={{
-                        backgroundColor: 'transparent',
-                        color: '#1c4fd8',
-                        padding: '0.75rem 1.5rem',
-                        borderRadius: '0.75rem',
-                        fontWeight: '600',
-                        border: '2px solid #1c4fd8',
-                        cursor: 'pointer',
-                        transition: 'all 0.3s ease',
-                        fontSize: '0.875rem'
-                      }}
-                      onMouseEnter={(e) => {
-                        e.target.style.backgroundColor = '#1c4fd8';
-                        e.target.style.color = 'white';
-                      }}
-                      onMouseLeave={(e) => {
-                        e.target.style.backgroundColor = 'transparent';
-                        e.target.style.color = '#1c4fd8';
-                      }}
-                    >
-                      Get Notified
-                    </button>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
+            TRANSFORMATIONAL
+            <br />
+            <span style={{
+              background: 'linear-gradient(135deg, #fa8229 0%, #ff6b35 100%)',
+              WebkitBackgroundClip: 'text',
+              WebkitTextFillColor: 'transparent',
+              backgroundClip: 'text'
+            }}>BOOKS</span>
+          </h2>
+          <p style={{ 
+            fontSize: windowWidth >= 640 ? '1.25rem' : '1rem', 
+            color: '#374151', 
+            maxWidth: '48rem', 
+            margin: '0 auto', 
+            lineHeight: '1.7'
+          }}>
+            Discover powerful insights and practical wisdom for healing, growth, and authentic success 
+            through Joe's transformational books.
+          </p>
         </div>
-      </section>
+
+        <div style={{ 
+          display: 'grid', 
+          gridTemplateColumns: windowWidth >= 768 ? 'repeat(2, 1fr)' : '1fr',
+          gap: '2rem',
+          maxWidth: '64rem',
+          margin: '0 auto'
+        }}>
+          {books.map((book, index) => (
+            <div
+              key={book.id}
+              style={{
+                backgroundColor: book.bgColor,
+                borderRadius: '1.5rem',
+                padding: '2rem',
+                border: `1px solid ${book.borderColor}`,
+                boxShadow: '0 4px 12px rgba(0, 0, 0, 0.05)',
+                transition: 'all 0.4s cubic-bezier(0.4, 0, 0.2, 1)',
+                transform: 'translateY(0)',
+                position: 'relative',
+                overflow: 'hidden'
+              }}
+              onMouseEnter={(e) => {
+                e.currentTarget.style.boxShadow = '0 20px 40px rgba(0, 0, 0, 0.1)';
+                e.currentTarget.style.transform = 'translateY(-8px)';
+                e.currentTarget.style.borderColor = book.buttons[0].color;
+              }}
+              onMouseLeave={(e) => {
+                e.currentTarget.style.boxShadow = '0 4px 12px rgba(0, 0, 0, 0.05)';
+                e.currentTarget.style.transform = 'translateY(0)';
+                e.currentTarget.style.borderColor = book.borderColor;
+              }}
+            >
+              <div style={{ display: 'flex', alignItems: 'flex-start', gap: '1.5rem' }}>
+                {/* Book Cover */}
+                <div style={{
+                  width: '120px',
+                  height: '160px',
+                  borderRadius: '0.75rem',
+                  flexShrink: 0,
+                  boxShadow: `0 8px 20px ${book.buttons[0].color}50`,
+                  position: 'relative',
+                  overflow: 'hidden'
+                }}>
+                  <img
+                    src={book.cover}
+                    alt={`${book.title} cover`}
+                    style={{
+                      width: '100%',
+                      height: '100%',
+                      objectFit: 'cover',
+                      borderRadius: '0.75rem'
+                    }}
+                  />
+                </div>
+
+                {/* Book Details */}
+                <div style={{ flex: 1 }}>
+                  <div style={{
+                    display: 'inline-block',
+                    backgroundColor: book.statusColor,
+                    color: 'white',
+                    padding: '0.25rem 0.75rem',
+                    borderRadius: '9999px',
+                    fontSize: '0.75rem',
+                    fontWeight: '700',
+                    marginBottom: '1rem'
+                  }}>
+                    {book.statusText}
+                  </div>
+                  
+                  <h3 style={{ 
+                    fontSize: '1.5rem', 
+                    fontWeight: '900', 
+                    color: '#111827', 
+                    marginBottom: '1rem',
+                    margin: '0 0 1rem 0',
+                    lineHeight: '1.3'
+                  }}>
+                    {book.title}
+                  </h3>
+                  
+                  <p style={{ 
+                    color: '#4b5563', 
+                    marginBottom: '1.5rem', 
+                    lineHeight: '1.6',
+                    margin: '0 0 1.5rem 0',
+                    fontSize: '0.9rem'
+                  }}>
+                    {book.description}
+                  </p>
+
+                  {/* Downloads or Notification */}
+                  <div style={{ 
+                    display: 'flex', 
+                    alignItems: 'center', 
+                    gap: '0.5rem', 
+                    marginBottom: '1.5rem',
+                    fontSize: '0.875rem',
+                    color: '#6b7280'
+                  }}>
+                    {book.downloads ? (
+                      <span>📥 {book.downloads} Downloads</span>
+                    ) : (
+                      <span>🔔 {book.notification}</span>
+                    )}
+                  </div>
+                  
+                  {/* Buttons */}
+                  <div style={{ display: 'flex', gap: '0.75rem', flexWrap: 'wrap' }}>
+                    {book.buttons.map((button, btnIndex) => (
+                      <button
+                        key={btnIndex}
+                        onClick={button.disabled ? undefined : () => handleSocialClick(button.url)}
+                        disabled={button.disabled}
+                        style={{
+                          backgroundColor: button.type === 'primary' ? button.color : 'transparent',
+                          color: button.type === 'primary' ? 'white' : button.color,
+                          padding: '0.75rem 1.5rem',
+                          borderRadius: '0.75rem',
+                          fontWeight: '600',
+                          border: button.type === 'secondary' ? `2px solid ${button.color}` : 'none',
+                          cursor: button.disabled ? 'not-allowed' : 'pointer',
+                          transition: 'all 0.3s ease',
+                          fontSize: '0.875rem',
+                          opacity: button.disabled ? '0.7' : '1'
+                        }}
+                        onMouseEnter={(e) => {
+                          if (!button.disabled) {
+                            if (button.type === 'primary') {
+                              e.target.style.backgroundColor = button.hoverColor || button.color;
+                              e.target.style.transform = 'translateY(-2px)';
+                            } else {
+                              e.target.style.backgroundColor = button.color;
+                              e.target.style.color = 'white';
+                            }
+                          }
+                        }}
+                        onMouseLeave={(e) => {
+                          if (!button.disabled) {
+                            if (button.type === 'primary') {
+                              e.target.style.backgroundColor = button.color;
+                              e.target.style.transform = 'translateY(0)';
+                            } else {
+                              e.target.style.backgroundColor = 'transparent';
+                              e.target.style.color = button.color;
+                            }
+                          }
+                        }}
+                      >
+                        {button.text}
+                      </button>
+                    ))}
+                  </div>
+                </div>
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
 
       {/* Social Platforms Section */}
       <section id="platforms" style={{ padding: '5rem 0', backgroundColor: 'white' }}>
