@@ -70,7 +70,7 @@ const FounderWebpage = () => {
       statusColor: "#16a34a",
       bgColor: "#fef7ed",
       borderColor: "#fed7aa",
-      downloads: "0",
+      downloads: "4",
       buttons: [
         {
           text: "Support Author",
