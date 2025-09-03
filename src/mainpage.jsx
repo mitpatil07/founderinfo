@@ -25,7 +25,7 @@ const FounderWebpage = () => {
 
     window.addEventListener('scroll', handleScroll);
     window.addEventListener('resize', handleResize);
-    
+
     return () => {
       window.removeEventListener('scroll', handleScroll);
       window.removeEventListener('resize', handleResize);
@@ -33,6 +33,33 @@ const FounderWebpage = () => {
   }, []);
 
   const books = [
+
+    {
+      id: 2,
+      cover: book2,
+      title: "THE AWAKENED ENTREPRENEUR",
+      description: "A revolutionary guide to building businesses with consciousness, purpose, and authentic success. Learn how to align your entrepreneurial journey with your soul's mission.",
+      status: "coming-soon",
+      statusText: "COMING SOON",
+      statusColor: "#f59e0b",
+      bgColor: "#f1f5f9",
+      borderColor: "#cbd5e1",
+      notification: "Get notified on release",
+      buttons: [
+        {
+          text: "Coming Soon",
+          type: "primary",
+          color: "#1c4fd8",
+          disabled: true
+        },
+        // {
+        //   text: "Get Notified",
+        //   type: "secondary",
+        //   color: "#1c4fd8",
+        //   url: "https://projectsmile.world/"
+        // }
+      ]
+    },
     {
       id: 1,
       cover: book1,
@@ -56,32 +83,6 @@ const FounderWebpage = () => {
           text: "Download Free",
           type: "secondary",
           color: "#fa8229",
-          url: "https://projectsmile.world/"
-        }
-      ]
-    },
-    {
-      id: 2,
-      cover: book2,
-      title: "THE AWAKENED ENTREPRENEUR",
-      description: "A revolutionary guide to building businesses with consciousness, purpose, and authentic success. Learn how to align your entrepreneurial journey with your soul's mission.",
-      status: "coming-soon",
-      statusText: "COMING SOON",
-      statusColor: "#f59e0b",
-      bgColor: "#f1f5f9",
-      borderColor: "#cbd5e1",
-      notification: "Get notified on release",
-      buttons: [
-        {
-          text: "Pre-Order Soon",
-          type: "primary",
-          color: "#64748b",
-          disabled: true
-        },
-        {
-          text: "Get Notified",
-          type: "secondary",
-          color: "#1c4fd8",
           url: "https://projectsmile.world/"
         }
       ]
@@ -156,27 +157,27 @@ const FounderWebpage = () => {
         borderBottom: isScrolled ? '1px solid rgba(229, 231, 235, 1)' : 'none',
         transition: 'all 0.3s cubic-bezier(0.4, 0, 0.2, 1)'
       }}>
-        <div style={{ 
-          maxWidth: '80rem', 
-          margin: '0 auto', 
+        <div style={{
+          maxWidth: '80rem',
+          margin: '0 auto',
           padding: windowWidth < 640 ? '0 1rem' : '0 2rem'
         }}>
-          <div style={{ 
-            display: 'flex', 
-            justifyContent: 'space-between', 
-            alignItems: 'center', 
+          <div style={{
+            display: 'flex',
+            justifyContent: 'space-between',
+            alignItems: 'center',
             height: windowWidth < 640 ? '3.5rem' : '4.5rem'
           }}>
             {/* Logo */}
-            <div style={{ 
-              display: 'flex', 
+            <div style={{
+              display: 'flex',
               alignItems: 'center',
               flex: '1'
             }}>
-              <h1 style={{ 
-                fontSize: windowWidth < 640 ? '1.125rem' : windowWidth < 768 ? '1.375rem' : '1.5rem', 
-                fontWeight: '900', 
-                color: '#111827', 
+              <h1 style={{
+                fontSize: windowWidth < 640 ? '1.125rem' : windowWidth < 768 ? '1.375rem' : '1.5rem',
+                fontWeight: '900',
+                color: '#111827',
                 margin: 0,
                 transition: 'all 0.3s ease',
                 letterSpacing: '-0.025em',
@@ -185,14 +186,14 @@ const FounderWebpage = () => {
                 Project<span style={{ color: '#fa8229' }}> Smile</span>
               </h1>
             </div>
-            
+
             {/* Support Button */}
-            <div style={{ 
-              display: 'flex', 
+            <div style={{
+              display: 'flex',
               alignItems: 'center',
               justifyContent: 'flex-end'
             }}>
-              <button 
+              <button
                 onClick={handleSupportClick}
                 style={{
                   backgroundColor: '#fa8229',
@@ -264,7 +265,7 @@ const FounderWebpage = () => {
           borderRadius: '50%',
           animation: 'float 8s ease-in-out infinite reverse'
         }}></div>
-        
+
         <style>
           {`
             @keyframes float {
@@ -324,14 +325,14 @@ const FounderWebpage = () => {
         </style>
 
         <div style={{ maxWidth: '80rem', margin: '0 auto', padding: '0 1rem', width: '100%' }}>
-          <div style={{ 
-            display: 'grid', 
+          <div style={{
+            display: 'grid',
             gridTemplateColumns: windowWidth >= 1024 ? '1fr 1fr' : '1fr',
             gap: windowWidth >= 1024 ? '4rem' : '2rem',
             alignItems: 'center'
           }}>
             {/* Content */}
-            <div className="hero-content" style={{ 
+            <div className="hero-content" style={{
               textAlign: windowWidth >= 1024 ? 'left' : 'center',
               order: windowWidth >= 1024 ? 1 : 2
             }}>
@@ -351,12 +352,12 @@ const FounderWebpage = () => {
                 <Star size={14} style={{ marginRight: '0.5rem' }} />
                 Global Speaker & Author
               </div>
-              
-              <h1 style={{ 
-                fontSize: windowWidth >= 1024 ? '4rem' : windowWidth >= 640 ? '3rem' : '2.5rem', 
-                fontWeight: '900', 
-                color: '#111827', 
-                marginBottom: '2rem', 
+
+              <h1 style={{
+                fontSize: windowWidth >= 1024 ? '4rem' : windowWidth >= 640 ? '3rem' : '2.5rem',
+                fontWeight: '900',
+                color: '#111827',
+                marginBottom: '2rem',
                 lineHeight: '1.1',
                 margin: '0 0 2rem 0'
               }}>
@@ -369,12 +370,12 @@ const FounderWebpage = () => {
                   backgroundClip: 'text'
                 }}>MITTIGA</span>
               </h1>
-              
-              <div style={{ 
-                color: '#374151', 
-                fontSize: windowWidth >= 640 ? '1.125rem' : '1rem', 
-                lineHeight: '1.7', 
-                marginBottom: '2.5rem', 
+
+              <div style={{
+                color: '#374151',
+                fontSize: windowWidth >= 640 ? '1.125rem' : '1rem',
+                lineHeight: '1.7',
+                marginBottom: '2.5rem',
                 maxWidth: '42rem'
               }}>
                 <p style={{ marginBottom: '1.5rem', textAlign: 'justify' }}>
@@ -386,10 +387,10 @@ const FounderWebpage = () => {
               </div>
 
               {/* Action Buttons */}
-              <div className="hero-buttons" style={{ 
-                display: 'flex', 
+              <div className="hero-buttons" style={{
+                display: 'flex',
                 flexDirection: windowWidth >= 640 ? 'row' : 'column',
-                gap: '1rem', 
+                gap: '1rem',
                 justifyContent: windowWidth >= 1024 ? 'flex-start' : 'center',
                 marginBottom: '3rem'
               }}>
@@ -460,8 +461,8 @@ const FounderWebpage = () => {
               </div>
 
               {/* Social Links */}
-              <div className="social-icons" style={{ 
-                display: 'flex', 
+              <div className="social-icons" style={{
+                display: 'flex',
                 justifyContent: windowWidth >= 1024 ? 'flex-start' : 'center',
                 gap: '1rem'
               }}>
@@ -503,7 +504,7 @@ const FounderWebpage = () => {
             </div>
 
             {/* Image */}
-            <div className="hero-image" style={{ 
+            <div className="hero-image" style={{
               order: windowWidth >= 1024 ? 2 : 1,
               display: 'flex',
               justifyContent: 'center'
@@ -523,8 +524,8 @@ const FounderWebpage = () => {
                   <img
                     src="/joemittunga.jpg"
                     alt="Joe Mittiga - Founder"
-                    style={{ 
-                      width: '100%', 
+                    style={{
+                      width: '100%',
                       height: '100%',
                       objectFit: 'cover',
                       transition: 'transform 0.3s ease'
@@ -553,7 +554,7 @@ const FounderWebpage = () => {
               marginBottom: '2rem',
               lineHeight: '1.1'
             }}>
-              Inspiring 
+              Inspiring
               <br />
               <span style={{
                 background: 'linear-gradient(135deg, #fa8229 0%, #ff6b35 100%)',
@@ -572,7 +573,7 @@ const FounderWebpage = () => {
               Joe Mittiga – Global TEDx Speaker, Author & Conscious CEO inspiring healing, purpose, and authentic success.
             </p>
           </div>
-          
+
           <div style={{ position: 'relative' }}>
             <div style={{
               borderRadius: '1.5rem',
@@ -585,9 +586,9 @@ const FounderWebpage = () => {
               width: '100%'
             }}>
               {!isPlaying ? (
-                <div 
-                  style={{ 
-                    position: 'relative', 
+                <div
+                  style={{
+                    position: 'relative',
                     cursor: 'pointer',
                     width: '100%',
                     height: '100%',
@@ -595,7 +596,7 @@ const FounderWebpage = () => {
                   }}
                   onClick={handlePlayVideo}
                 >
-                  <img 
+                  <img
                     src={thumbnailUrl}
                     alt="Video Thumbnail"
                     style={{
@@ -633,9 +634,9 @@ const FounderWebpage = () => {
                     backgroundColor: 'rgba(248, 130, 41, 0.1)',
                     opacity: 0,
                     transition: 'opacity 0.3s ease'
-                  }} 
-                  onMouseEnter={(e) => e.target.style.opacity = '1'}
-                  onMouseLeave={(e) => e.target.style.opacity = '0'}
+                  }}
+                    onMouseEnter={(e) => e.target.style.opacity = '1'}
+                    onMouseLeave={(e) => e.target.style.opacity = '0'}
                   />
                 </div>
               ) : (
@@ -658,206 +659,206 @@ const FounderWebpage = () => {
 
       {/* Books Section */}
       <section id="books" style={{ padding: '5rem 0', backgroundColor: '#f8fafc' }}>
-      <div style={{ maxWidth: '80rem', margin: '0 auto', padding: '0 1rem' }}>
-        <div style={{ textAlign: 'center', marginBottom: '4rem' }}>
-          <h2 style={{ 
-            fontSize: windowWidth >= 1024 ? '3.5rem' : windowWidth >= 640 ? '2.5rem' : '2rem', 
-            fontWeight: '900', 
-            color: '#111827', 
-            marginBottom: '2rem', 
-            lineHeight: '1.1'
-          }}>
-            TRANSFORMATIONAL
-            <br />
-            <span style={{
-              background: 'linear-gradient(135deg, #fa8229 0%, #ff6b35 100%)',
-              WebkitBackgroundClip: 'text',
-              WebkitTextFillColor: 'transparent',
-              backgroundClip: 'text'
-            }}>BOOKS</span>
-          </h2>
-          <p style={{ 
-            fontSize: windowWidth >= 640 ? '1.25rem' : '1rem', 
-            color: '#374151', 
-            maxWidth: '48rem', 
-            margin: '0 auto', 
-            lineHeight: '1.7'
-          }}>
-            Discover powerful insights and practical wisdom for healing, growth, and authentic success 
-            through Joe's transformational books.
-          </p>
-        </div>
+        <div style={{ maxWidth: '80rem', margin: '0 auto', padding: '0 1rem' }}>
+          <div style={{ textAlign: 'center', marginBottom: '4rem' }}>
+            <h2 style={{
+              fontSize: windowWidth >= 1024 ? '3.5rem' : windowWidth >= 640 ? '2.5rem' : '2rem',
+              fontWeight: '900',
+              color: '#111827',
+              marginBottom: '2rem',
+              lineHeight: '1.1'
+            }}>
+              TRANSFORMATIONAL
+              <br />
+              <span style={{
+                background: 'linear-gradient(135deg, #fa8229 0%, #ff6b35 100%)',
+                WebkitBackgroundClip: 'text',
+                WebkitTextFillColor: 'transparent',
+                backgroundClip: 'text'
+              }}>BOOKS</span>
+            </h2>
+            <p style={{
+              fontSize: windowWidth >= 640 ? '1.25rem' : '1rem',
+              color: '#374151',
+              maxWidth: '48rem',
+              margin: '0 auto',
+              lineHeight: '1.7'
+            }}>
+              Discover powerful insights and practical wisdom for healing, growth, and authentic success
+              through Joe's transformational books.
+            </p>
+          </div>
 
-        <div style={{ 
-          display: 'grid', 
-          gridTemplateColumns: windowWidth >= 768 ? 'repeat(2, 1fr)' : '1fr',
-          gap: '2rem',
-          maxWidth: '64rem',
-          margin: '0 auto'
-        }}>
-          {books.map((book, index) => (
-            <div
-              key={book.id}
-              style={{
-                backgroundColor: book.bgColor,
-                borderRadius: '1.5rem',
-                padding: '2rem',
-                border: `1px solid ${book.borderColor}`,
-                boxShadow: '0 4px 12px rgba(0, 0, 0, 0.05)',
-                transition: 'all 0.4s cubic-bezier(0.4, 0, 0.2, 1)',
-                transform: 'translateY(0)',
-                position: 'relative',
-                overflow: 'hidden'
-              }}
-              onMouseEnter={(e) => {
-                e.currentTarget.style.boxShadow = '0 20px 40px rgba(0, 0, 0, 0.1)';
-                e.currentTarget.style.transform = 'translateY(-8px)';
-                e.currentTarget.style.borderColor = book.buttons[0].color;
-              }}
-              onMouseLeave={(e) => {
-                e.currentTarget.style.boxShadow = '0 4px 12px rgba(0, 0, 0, 0.05)';
-                e.currentTarget.style.transform = 'translateY(0)';
-                e.currentTarget.style.borderColor = book.borderColor;
-              }}
-            >
-              <div style={{ display: 'flex', alignItems: 'flex-start', gap: '1.5rem' }}>
-                {/* Book Cover */}
-                <div style={{
-                  width: '120px',
-                  height: '160px',
-                  borderRadius: '0.75rem',
-                  flexShrink: 0,
-                  boxShadow: `0 8px 20px ${book.buttons[0].color}50`,
+          <div style={{
+            display: 'grid',
+            gridTemplateColumns: windowWidth >= 768 ? 'repeat(2, 1fr)' : '1fr',
+            gap: '2rem',
+            maxWidth: '64rem',
+            margin: '0 auto'
+          }}>
+            {books.map((book, index) => (
+              <div
+                key={book.id}
+                style={{
+                  backgroundColor: book.bgColor,
+                  borderRadius: '1.5rem',
+                  padding: '2rem',
+                  border: `1px solid ${book.borderColor}`,
+                  boxShadow: '0 4px 12px rgba(0, 0, 0, 0.05)',
+                  transition: 'all 0.4s cubic-bezier(0.4, 0, 0.2, 1)',
+                  transform: 'translateY(0)',
                   position: 'relative',
                   overflow: 'hidden'
-                }}>
-                  <img
-                    src={book.cover}
-                    alt={`${book.title} cover`}
-                    style={{
-                      width: '100%',
-                      height: '100%',
-                      objectFit: 'cover',
-                      borderRadius: '0.75rem'
-                    }}
-                  />
-                </div>
-
-                {/* Book Details */}
-                <div style={{ flex: 1 }}>
+                }}
+                onMouseEnter={(e) => {
+                  e.currentTarget.style.boxShadow = '0 20px 40px rgba(0, 0, 0, 0.1)';
+                  e.currentTarget.style.transform = 'translateY(-8px)';
+                  e.currentTarget.style.borderColor = book.buttons[0].color;
+                }}
+                onMouseLeave={(e) => {
+                  e.currentTarget.style.boxShadow = '0 4px 12px rgba(0, 0, 0, 0.05)';
+                  e.currentTarget.style.transform = 'translateY(0)';
+                  e.currentTarget.style.borderColor = book.borderColor;
+                }}
+              >
+                <div style={{ display: 'flex', alignItems: 'flex-start', gap: '1.5rem' }}>
+                  {/* Book Cover */}
                   <div style={{
-                    display: 'inline-block',
-                    backgroundColor: book.statusColor,
-                    color: 'white',
-                    padding: '0.25rem 0.75rem',
-                    borderRadius: '9999px',
-                    fontSize: '0.75rem',
-                    fontWeight: '700',
-                    marginBottom: '1rem'
+                    width: '120px',
+                    height: '160px',
+                    borderRadius: '0.75rem',
+                    flexShrink: 0,
+                    boxShadow: `0 8px 20px ${book.buttons[0].color}50`,
+                    position: 'relative',
+                    overflow: 'hidden'
                   }}>
-                    {book.statusText}
+                    <img
+                      src={book.cover}
+                      alt={`${book.title} cover`}
+                      style={{
+                        width: '100%',
+                        height: '100%',
+                        objectFit: 'cover',
+                        borderRadius: '0.75rem'
+                      }}
+                    />
                   </div>
-                  
-                  <h3 style={{ 
-                    fontSize: '1.5rem', 
-                    fontWeight: '900', 
-                    color: '#111827', 
-                    marginBottom: '1rem',
-                    margin: '0 0 1rem 0',
-                    lineHeight: '1.3'
-                  }}>
-                    {book.title}
-                  </h3>
-                  
-                  <p style={{ 
-                    color: '#4b5563', 
-                    marginBottom: '1.5rem', 
-                    lineHeight: '1.6',
-                    margin: '0 0 1.5rem 0',
-                    fontSize: '0.9rem'
-                  }}>
-                    {book.description}
-                  </p>
 
-                  {/* Downloads or Notification */}
-                  <div style={{ 
-                    display: 'flex', 
-                    alignItems: 'center', 
-                    gap: '0.5rem', 
-                    marginBottom: '1.5rem',
-                    fontSize: '0.875rem',
-                    color: '#6b7280'
-                  }}>
-                    {book.downloads ? (
-                      <span>📥 {book.downloads} Downloads</span>
-                    ) : (
-                      <span>🔔 {book.notification}</span>
-                    )}
-                  </div>
-                  
-                  {/* Buttons */}
-                  <div style={{ display: 'flex', gap: '0.75rem', flexWrap: 'wrap' }}>
-                    {book.buttons.map((button, btnIndex) => (
-                      <button
-                        key={btnIndex}
-                        onClick={button.disabled ? undefined : () => handleSocialClick(button.url)}
-                        disabled={button.disabled}
-                        style={{
-                          backgroundColor: button.type === 'primary' ? button.color : 'transparent',
-                          color: button.type === 'primary' ? 'white' : button.color,
-                          padding: '0.75rem 1.5rem',
-                          borderRadius: '0.75rem',
-                          fontWeight: '600',
-                          border: button.type === 'secondary' ? `2px solid ${button.color}` : 'none',
-                          cursor: button.disabled ? 'not-allowed' : 'pointer',
-                          transition: 'all 0.3s ease',
-                          fontSize: '0.875rem',
-                          opacity: button.disabled ? '0.7' : '1'
-                        }}
-                        onMouseEnter={(e) => {
-                          if (!button.disabled) {
-                            if (button.type === 'primary') {
-                              e.target.style.backgroundColor = button.hoverColor || button.color;
-                              e.target.style.transform = 'translateY(-2px)';
-                            } else {
-                              e.target.style.backgroundColor = button.color;
-                              e.target.style.color = 'white';
+                  {/* Book Details */}
+                  <div style={{ flex: 1 }}>
+                    <div style={{
+                      display: 'inline-block',
+                      backgroundColor: book.statusColor,
+                      color: 'white',
+                      padding: '0.25rem 0.75rem',
+                      borderRadius: '9999px',
+                      fontSize: '0.75rem',
+                      fontWeight: '700',
+                      marginBottom: '1rem'
+                    }}>
+                      {book.statusText}
+                    </div>
+
+                    <h3 style={{
+                      fontSize: '1.5rem',
+                      fontWeight: '900',
+                      color: '#111827',
+                      marginBottom: '1rem',
+                      margin: '0 0 1rem 0',
+                      lineHeight: '1.3'
+                    }}>
+                      {book.title}
+                    </h3>
+
+                    <p style={{
+                      color: '#4b5563',
+                      marginBottom: '1.5rem',
+                      lineHeight: '1.6',
+                      margin: '0 0 1.5rem 0',
+                      fontSize: '0.9rem'
+                    }}>
+                      {book.description}
+                    </p>
+
+                    {/* Downloads or Notification */}
+                    <div style={{
+                      display: 'flex',
+                      alignItems: 'center',
+                      gap: '0.5rem',
+                      marginBottom: '1.5rem',
+                      fontSize: '0.875rem',
+                      color: '#6b7280'
+                    }}>
+                      {book.downloads ? (
+                        <span>📥 {book.downloads} Downloads</span>
+                      ) : (
+                        <span>🔔 {book.notification}</span>
+                      )}
+                    </div>
+
+                    {/* Buttons */}
+                    <div style={{ display: 'flex', gap: '0.75rem', flexWrap: 'wrap' }}>
+                      {book.buttons.map((button, btnIndex) => (
+                        <button
+                          key={btnIndex}
+                          onClick={button.disabled ? undefined : () => handleSocialClick(button.url)}
+                          disabled={button.disabled}
+                          style={{
+                            backgroundColor: button.type === 'primary' ? button.color : 'transparent',
+                            color: button.type === 'primary' ? 'white' : button.color,
+                            padding: '0.75rem 1.5rem',
+                            borderRadius: '0.75rem',
+                            fontWeight: '600',
+                            border: button.type === 'secondary' ? `2px solid ${button.color}` : 'none',
+                            cursor: button.disabled ? 'not-allowed' : 'pointer',
+                            transition: 'all 0.3s ease',
+                            fontSize: '0.875rem',
+                            opacity: button.disabled ? '0.7' : '1'
+                          }}
+                          onMouseEnter={(e) => {
+                            if (!button.disabled) {
+                              if (button.type === 'primary') {
+                                e.target.style.backgroundColor = button.hoverColor || button.color;
+                                e.target.style.transform = 'translateY(-2px)';
+                              } else {
+                                e.target.style.backgroundColor = button.color;
+                                e.target.style.color = 'white';
+                              }
                             }
-                          }
-                        }}
-                        onMouseLeave={(e) => {
-                          if (!button.disabled) {
-                            if (button.type === 'primary') {
-                              e.target.style.backgroundColor = button.color;
-                              e.target.style.transform = 'translateY(0)';
-                            } else {
-                              e.target.style.backgroundColor = 'transparent';
-                              e.target.style.color = button.color;
+                          }}
+                          onMouseLeave={(e) => {
+                            if (!button.disabled) {
+                              if (button.type === 'primary') {
+                                e.target.style.backgroundColor = button.color;
+                                e.target.style.transform = 'translateY(0)';
+                              } else {
+                                e.target.style.backgroundColor = 'transparent';
+                                e.target.style.color = button.color;
+                              }
                             }
-                          }
-                        }}
-                      >
-                        {button.text}
-                      </button>
-                    ))}
+                          }}
+                        >
+                          {button.text}
+                        </button>
+                      ))}
+                    </div>
                   </div>
                 </div>
               </div>
-            </div>
-          ))}
+            ))}
+          </div>
         </div>
-      </div>
-    </section>
+      </section>
 
       {/* Social Platforms Section */}
       <section id="platforms" style={{ padding: '5rem 0', backgroundColor: 'white' }}>
         <div style={{ maxWidth: '80rem', margin: '0 auto', padding: '0 1rem' }}>
           <div style={{ textAlign: 'center', marginBottom: '4rem' }}>
-            <h2 style={{ 
-              fontSize: windowWidth >= 1024 ? '3.5rem' : windowWidth >= 640 ? '2.5rem' : '2rem', 
-              fontWeight: '900', 
-              color: '#111827', 
-              marginBottom: '2rem', 
+            <h2 style={{
+              fontSize: windowWidth >= 1024 ? '3.5rem' : windowWidth >= 640 ? '2.5rem' : '2rem',
+              fontWeight: '900',
+              color: '#111827',
+              marginBottom: '2rem',
               lineHeight: '1.1'
             }}>
               JOIN THE
@@ -869,20 +870,20 @@ const FounderWebpage = () => {
                 backgroundClip: 'text'
               }}>COMMUNITY</span>
             </h2>
-            <p style={{ 
-              fontSize: windowWidth >= 640 ? '1.25rem' : '1rem', 
-              color: '#374151', 
-              maxWidth: '48rem', 
-              margin: '0 auto', 
+            <p style={{
+              fontSize: windowWidth >= 640 ? '1.25rem' : '1rem',
+              color: '#374151',
+              maxWidth: '48rem',
+              margin: '0 auto',
               lineHeight: '1.7'
             }}>
-              Connect with Joe across multiple platforms and become part of a thriving community 
+              Connect with Joe across multiple platforms and become part of a thriving community
               of entrepreneurs, innovators, and change-makers from around the world.
             </p>
           </div>
-          
-          <div style={{ 
-            display: 'grid', 
+
+          <div style={{
+            display: 'grid',
             gridTemplateColumns: windowWidth >= 1280 ? 'repeat(3, 1fr)' : windowWidth >= 768 ? 'repeat(2, 1fr)' : '1fr',
             gap: '2rem'
           }}>
@@ -945,20 +946,20 @@ const FounderWebpage = () => {
                     }}
                   />
                 </div>
-                
-                <h3 style={{ 
-                  fontSize: '1.5rem', 
-                  fontWeight: '900', 
-                  color: '#111827', 
+
+                <h3 style={{
+                  fontSize: '1.5rem',
+                  fontWeight: '900',
+                  color: '#111827',
                   marginBottom: '1rem',
                   margin: '0 0 1rem 0'
                 }}>
                   {platform.title}
                 </h3>
-                
-                <p style={{ 
-                  color: '#4b5563', 
-                  marginBottom: '2rem', 
+
+                <p style={{
+                  color: '#4b5563',
+                  marginBottom: '2rem',
                   lineHeight: '1.7',
                   margin: '0 0 2rem 0',
                   textAlign: 'justify',
@@ -966,7 +967,7 @@ const FounderWebpage = () => {
                 }}>
                   {platform.desc}
                 </p>
-                
+
                 <button
                   onClick={() => handleSocialClick(platform.url)}
                   style={{
@@ -1008,27 +1009,27 @@ const FounderWebpage = () => {
       <footer id="contact" style={{ backgroundColor: '#111827', color: 'white', padding: '4rem 0' }}>
         <div style={{ maxWidth: '80rem', margin: '0 auto', padding: '0 1rem' }}>
           <div style={{ textAlign: 'center', marginBottom: '3rem' }}>
-            <h3 style={{ 
-              fontSize: windowWidth >= 1024 ? '2.5rem' : windowWidth >= 640 ? '2rem' : '1.75rem', 
-              fontWeight: '900', 
-              marginBottom: '1.5rem', 
+            <h3 style={{
+              fontSize: windowWidth >= 1024 ? '2.5rem' : windowWidth >= 640 ? '2rem' : '1.75rem',
+              fontWeight: '900',
+              marginBottom: '1.5rem',
               lineHeight: '1.2'
             }}>
               READY TO
               <br />
               <span style={{ color: '#fa8229' }}>AWAKEN YOUR TRUE POTENTIAL?</span>
             </h3>
-            <p style={{ 
-              fontSize: windowWidth >= 640 ? '1.125rem' : '1rem', 
-              color: '#d1d5db', 
-              maxWidth: '48rem', 
-              margin: '0 auto', 
+            <p style={{
+              fontSize: windowWidth >= 640 ? '1.125rem' : '1rem',
+              color: '#d1d5db',
+              maxWidth: '48rem',
+              margin: '0 auto',
               lineHeight: '1.7'
             }}>
               Join thousands who are choosing healing, purpose, and authentic success. Stay inspired, live with love, and step boldly into who you're meant to be.
             </p>
           </div>
-          
+
           {/* Social Icons */}
           <div style={{ display: 'flex', justifyContent: 'center', gap: '1rem', marginBottom: '3rem' }}>
             {socialLinks.map((social, index) => (
@@ -1067,13 +1068,13 @@ const FounderWebpage = () => {
               </button>
             ))}
           </div>
-          
+
           {/* CTA Buttons */}
-          <div style={{ 
-            display: 'flex', 
+          <div style={{
+            display: 'flex',
             flexDirection: windowWidth >= 768 ? 'row' : 'column',
-            gap: '1rem', 
-            justifyContent: 'center', 
+            gap: '1rem',
+            justifyContent: 'center',
             marginBottom: '3rem',
             flexWrap: 'wrap'
           }}>
@@ -1176,11 +1177,11 @@ const FounderWebpage = () => {
               EXPLORE PRODUCTS
             </button>
           </div>
-          
+
           {/* Footer Bottom */}
-          <div style={{ 
-            textAlign: 'center', 
-            paddingTop: '2rem', 
+          <div style={{
+            textAlign: 'center',
+            paddingTop: '2rem',
             borderTop: '1px solid #1f2937'
           }}>
             <p style={{ color: '#6b7280', margin: 0, fontSize: '0.875rem' }}>
