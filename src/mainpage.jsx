@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { Play, Tv, Facebook, ShoppingCart, Twitter, Instagram, Linkedin, Youtube, Heart, Globe, Menu, X, ArrowRight, Star, Users, Award, ExternalLink } from 'lucide-react';
+import api from './api';
 
 import marctv from "../src/assets/marktv.png"
 import projectsmile from "../src/assets/projectsmilefund.jpg"
@@ -13,6 +14,21 @@ const FounderWebpage = () => {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isPlaying, setIsPlaying] = useState(false);
   const [windowWidth, setWindowWidth] = useState(typeof window !== 'undefined' ? window.innerWidth : 1024);
+
+  const [books, setBooks] = useState([]);
+  const [profile, setProfile] = useState({
+    name: 'JOE MITTIGA',
+    title: 'Global Speaker & Author',
+    bioPart1: 'Joe Mittiga is a Global TEDx Speaker, best-selling author, and the visionary Founder of ProjectSmile.world. Known for blending spiritual wisdom with real-world success, Joe helps people reconnect with their true power, purpose, and inner peace.',
+    bioPart2: 'Through his talks, coaching, and writing, Joe has inspired thousands to rise into their highest potential—living with more clarity, love, and abundance. His journey of transformation and heart-centered leadership continues to guide individuals and organizations worldwide.',
+    supportUrl: 'https://www.paypal.com/donate/?hosted_button_id=7QRRA68W82CF4',
+    exploreUrl: 'https://projectsmile.world/',
+    youtubeUrl: 'https://www.youtube.com/@JoeMittiga',
+    instagramUrl: 'https://www.instagram.com/joemittiga2/',
+    linkedinUrl: 'https://www.linkedin.com/in/joemittiga/',
+    facebookUrl: 'https://www.facebook.com/people/Joe-Mittiga/61574825025092/',
+    twitterUrl: 'https://x.com/mittiga95743'
+  });
 
   useEffect(() => {
     const handleScroll = () => {
@@ -32,62 +48,30 @@ const FounderWebpage = () => {
     };
   }, []);
 
-  const books = [
+  useEffect(() => {
+    // Fetch data
+    const fetchData = async () => {
+      try {
+        const [booksRes, profileRes] = await Promise.all([
+          api.get('/books'),
+          api.get('/profile')
+        ]);
+        if (booksRes.data && booksRes.data.length > 0) setBooks(booksRes.data);
+        if (profileRes.data && profileRes.data.name) setProfile(profileRes.data);
+      } catch (err) { console.error(err); }
+    };
+    fetchData();
 
-    {
-      id: 2,
-      cover: book2,
-      title: "THE AWAKENED ENTREPRENEUR",
-      description: "A revolutionary guide to building businesses with consciousness, purpose, and authentic success. Learn how to align your entrepreneurial journey with your soul's mission.",
-      status: "coming-soon",
-      statusText: "COMING SOON",
-      statusColor: "#f59e0b",
-      bgColor: "#f1f5f9",
-      borderColor: "#cbd5e1",
-      notification: "Get notified on release",
-      buttons: [
-        {
-          text: "Coming Soon",
-          type: "primary",
-          color: "#1c4fd8",
-          disabled: true
-        },
-        // {
-        //   text: "Get Notified",
-        //   type: "secondary",
-        //   color: "#1c4fd8",
-        //   url: "https://projectsmile.world/"
-        // }
-      ]
-    },
-    {
-      id: 1,
-      cover: book1,
-      title: "HEALING ADDICTION: A Journey to Reclaim Your Inner Child",
-      description: "This book is not just words - it is a mirror. A mirror to see your hidden pain, buried memories, and the little child inside you who is still waiting to be seen, loved, and healed.",
-      status: "available",
-      statusText: "AVAILABLE NOW",
-      statusColor: "#16a34a",
-      bgColor: "#fef7ed",
-      borderColor: "#fed7aa",
-      downloads: "4",
-      buttons: [
-        {
-          text: "Support Author",
-          type: "primary",
-          color: "#fa8229",
-          hoverColor: "#ea7520",
-          url: "https://www.paypal.com/donate/?hosted_button_id=7QRRA68W82CF4"
-        },
-        {
-          text: "Download Free",
-          type: "secondary",
-          color: "#fa8229",
-          url: "https://drive.google.com/file/d/1TaGvzdEcFceDRK-as07JQsglsy3xlt5K/view"
-        }
-      ]
-    }
-  ];
+    // Ping visitor
+    const pingView = async () => {
+      const isNewVisitor = !localStorage.getItem('hasVisited');
+      if (isNewVisitor) localStorage.setItem('hasVisited', 'true');
+      try {
+        await api.post('/analytics/ping', { isNewVisitor });
+      } catch (err) { }
+    };
+    pingView();
+  }, []);
 
   const videoId = "-zrF1dgO9Vo";
   const thumbnailUrl = `https://img.youtube.com/vi/${videoId}/maxresdefault.jpg`;
@@ -105,11 +89,11 @@ const FounderWebpage = () => {
   };
 
   const socialLinks = [
-    { icon: Youtube, url: 'https://www.youtube.com/@JoeMittiga', color: '#ff0000' },
-    { icon: Instagram, url: 'https://www.instagram.com/joemittiga2/', color: '#e4405f' },
-    { icon: Linkedin, url: 'https://www.linkedin.com/in/joemittiga/', color: '#0077b5' },
-    { icon: Facebook, url: 'https://www.facebook.com/people/Joe-Mittiga/61574825025092/', color: '#1877f2' },
-    { icon: Twitter, url: 'https://x.com/mittiga95743', color: '#1da1f2' },
+    { icon: Youtube, url: profile.youtubeUrl, color: '#ff0000' },
+    { icon: Instagram, url: profile.instagramUrl, color: '#e4405f' },
+    { icon: Linkedin, url: profile.linkedinUrl, color: '#0077b5' },
+    { icon: Facebook, url: profile.facebookUrl, color: '#1877f2' },
+    { icon: Twitter, url: profile.twitterUrl, color: '#1da1f2' },
   ];
 
   const platforms = [
@@ -194,7 +178,7 @@ const FounderWebpage = () => {
               justifyContent: 'flex-end'
             }}>
               <button
-                onClick={handleSupportClick}
+                onClick={() => handleSocialClick(profile.supportUrl)}
                 style={{
                   backgroundColor: '#fa8229',
                   color: 'white',
@@ -350,7 +334,7 @@ const FounderWebpage = () => {
                 color: '#fa8229'
               }}>
                 <Star size={14} style={{ marginRight: '0.5rem' }} />
-                Global Speaker & Author
+                {profile.title}
               </div>
 
               <h1 style={{
@@ -359,16 +343,17 @@ const FounderWebpage = () => {
                 color: '#111827',
                 marginBottom: '2rem',
                 lineHeight: '1.1',
-                margin: '0 0 2rem 0'
+                margin: '0 0 2rem 0',
+                textTransform: 'uppercase'
               }}>
-                JOE
+                {profile.name.split(' ')[0]}
                 <br />
                 <span style={{
                   background: 'linear-gradient(135deg, #fa8229 0%, #ff6b35 100%)',
                   WebkitBackgroundClip: 'text',
                   WebkitTextFillColor: 'transparent',
                   backgroundClip: 'text'
-                }}>MITTIGA</span>
+                }}>{profile.name.split(' ').slice(1).join(' ')}</span>
               </h1>
 
               <div style={{
@@ -379,10 +364,10 @@ const FounderWebpage = () => {
                 maxWidth: '42rem'
               }}>
                 <p style={{ marginBottom: '1.5rem', textAlign: 'justify' }}>
-                  Joe Mittiga is a Global TEDx Speaker, best-selling author, and the visionary Founder of ProjectSmile.world. Known for blending spiritual wisdom with real-world success, Joe helps people reconnect with their true power, purpose, and inner peace.
+                  {profile.bioPart1}
                 </p>
                 <p style={{ margin: 0, textAlign: 'justify' }}>
-                  Through his talks, coaching, and writing, Joe has inspired thousands to rise into their highest potential—living with more clarity, love, and abundance. His journey of transformation and heart-centered leadership continues to guide individuals and organizations worldwide.
+                  {profile.bioPart2}
                 </p>
               </div>
 
@@ -395,7 +380,7 @@ const FounderWebpage = () => {
                 marginBottom: '3rem'
               }}>
                 <button
-                  onClick={() => handleSocialClick('https://www.paypal.com/donate/?hosted_button_id=7QRRA68W82CF4')}
+                  onClick={() => handleSocialClick(profile.supportUrl)}
                   style={{
                     backgroundColor: '#1c4fd8',
                     color: 'white',
@@ -426,7 +411,7 @@ const FounderWebpage = () => {
                   Support Us
                 </button>
                 <button
-                  onClick={() => handleSocialClick('https://projectsmile.world/')}
+                  onClick={() => handleSocialClick(profile.exploreUrl)}
                   style={{
                     backgroundColor: 'white',
                     color: '#111827',
