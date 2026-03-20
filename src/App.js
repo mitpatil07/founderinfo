@@ -8,7 +8,6 @@ import AdminLogin from './components/admin/AdminLogin';
 function App() {
   const [adminToken, setAdminToken] = useState(null);
 
-  // ✅ FIX: Sync token from localStorage
   useEffect(() => {
     const token = localStorage.getItem('adminToken');
     if (token) {
