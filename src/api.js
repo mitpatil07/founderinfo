@@ -1,8 +1,7 @@
 import axios from 'axios';
 
-// Automatically choose backend URL based on environment.
-const isProduction = process.env.NODE_ENV === 'production';
-const BASE_URL = isProduction ? 'https://api.projectsmileonmarctv.com' : 'http://localhost:5000';
+// ✅ Always use environment variable (best practice)
+const BASE_URL = process.env.REACT_APP_API_URL || 'http://localhost:5000';
 
 const api = axios.create({
     baseURL: `${BASE_URL}/api`,
@@ -11,7 +10,7 @@ const api = axios.create({
     }
 });
 
-// Intercept requests to attach auth token for admin routes
+// ✅ Attach admin token automatically
 api.interceptors.request.use((config) => {
     const token = localStorage.getItem('adminToken');
     if (token) {
