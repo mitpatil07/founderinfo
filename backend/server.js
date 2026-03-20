@@ -1,4 +1,5 @@
 require('dotenv').config();
+
 const express = require('express');
 const mongoose = require('mongoose');
 const cors = require('cors');
@@ -7,15 +8,29 @@ const { Server } = require('socket.io');
 
 const app = express();
 const server = http.createServer(app);
+
+// ✅ CORS CONFIG (IMPORTANT)
+const allowedOrigins = [
+    'http://localhost:3000',
+    'https://projectsmileonmarctv.com',
+    'https://www.projectsmileonmarctv.com'
+];
+
+app.use(cors({
+    origin: allowedOrigins,
+    methods: ['GET', 'POST', 'PUT', 'DELETE'],
+    credentials: true
+}));
+
+app.use(express.json());
+
+// ✅ SOCKET.IO CONFIG
 const io = new Server(server, {
     cors: {
-        origin: '*',
-        methods: ['GET', 'POST', 'PUT', 'DELETE']
+        origin: allowedOrigins,
+        methods: ['GET', 'POST']
     }
 });
-
-app.use(cors());
-app.use(express.json());
 
 // Routes
 const { router: adminRoutes } = require('./routes/adminRoutes');
@@ -24,21 +39,21 @@ app.use('/api/books', require('./routes/bookRoutes'));
 app.use('/api/profile', require('./routes/profileRoutes'));
 app.use('/api/analytics', require('./routes/analyticsRoutes'));
 
-// Database config
-const MONGODB_URI = process.env.MONGODB_URI || 'mongodb://127.0.0.1:27017/founderinfo';
-
-mongoose.connect(MONGODB_URI)
+// ✅ DATABASE (STRICT)
+mongoose.connect(process.env.MONGODB_URI)
     .then(() => console.log('MongoDB connected'))
-    .catch(err => console.log(err));
+    .catch(err => {
+        console.error('MongoDB error:', err);
+        process.exit(1); // stop server if DB fails
+    });
 
-// Socket.io config for real-time trackers
+// ✅ SOCKET LOGIC
 let activeVisitors = 0;
 
 io.on('connection', (socket) => {
     activeVisitors++;
     io.emit('active_visitors', activeVisitors);
 
-    // Real-time page view hit
     socket.on('page_view', () => {
         io.emit('new_page_view');
     });
@@ -49,7 +64,14 @@ io.on('connection', (socket) => {
     });
 });
 
-const PORT = process.env.PORT || 5000;
+// ✅ HEALTH CHECK ROUTE
+app.get('/', (req, res) => {
+    res.send('FounderInfo Backend Running 🚀');
+});
+
+// ✅ SERVER START
+const PORT = process.env.PORT || 5001;
+
 server.listen(PORT, () => {
     console.log(`Server running on port ${PORT}`);
 });
