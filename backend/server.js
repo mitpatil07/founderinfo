@@ -69,6 +69,10 @@ app.get('/', (req, res) => {
     res.send('FounderInfo Backend Running 🚀');
 });
 
+app.get('/', (req, res) => {
+    res.send('FounderInfo Backend Running 🚀');
+});
+
 // ✅ SERVER START
 const PORT = process.env.PORT || 5001;
 
