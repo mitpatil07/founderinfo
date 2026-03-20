@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import { Toaster } from 'react-hot-toast';
 import FounderWebpage from './mainpage';
@@ -6,7 +6,15 @@ import AdminLayout from './components/admin/AdminLayout';
 import AdminLogin from './components/admin/AdminLogin';
 
 function App() {
-  const [adminToken, setAdminToken] = useState(localStorage.getItem('adminToken'));
+  const [adminToken, setAdminToken] = useState(null);
+
+  // ✅ FIX: Sync token from localStorage
+  useEffect(() => {
+    const token = localStorage.getItem('adminToken');
+    if (token) {
+      setAdminToken(token);
+    }
+  }, []);
 
   return (
     <Router>
@@ -14,13 +22,16 @@ function App() {
       <Routes>
         <Route path="/" element={<FounderWebpage />} />
 
-        <Route path="/admin/*" element={
-          adminToken ? (
-            <AdminLayout setToken={setAdminToken} />
-          ) : (
-            <AdminLogin setToken={setAdminToken} />
-          )
-        } />
+        <Route
+          path="/admin/*"
+          element={
+            adminToken ? (
+              <AdminLayout setToken={setAdminToken} />
+            ) : (
+              <AdminLogin setToken={setAdminToken} />
+            )
+          }
+        />
       </Routes>
     </Router>
   );
