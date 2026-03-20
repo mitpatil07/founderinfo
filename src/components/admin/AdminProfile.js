@@ -19,7 +19,6 @@ const AdminProfile = () => {
     });
     const [loading, setLoading] = useState(true);
     const [saving, setSaving] = useState(false);
-    const [success, setSuccess] = useState(false);
 
     useEffect(() => {
         fetchProfile();
@@ -54,74 +53,77 @@ const AdminProfile = () => {
         }
     };
 
-    if (loading) return <p>Loading...</p>;
+    if (loading) return <div className="p-8 text-center text-slate-500">Loading profile data...</div>;
 
     return (
-        <div style={{ maxWidth: '800px' }}>
-            <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '2rem' }}>
+        <div className="max-w-4xl mx-auto">
+            <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 mb-6 sm:mb-8">
                 <div>
-                    <h1 style={{ fontSize: '2rem', fontWeight: 'bold', color: '#0f172a', marginBottom: '0.5rem' }}>Profile Update</h1>
-                    <p style={{ color: '#64748b', margin: 0 }}>Update your hero section bio and social links.</p>
+                    <h1 className="text-2xl sm:text-3xl font-bold text-slate-900 mb-1 sm:mb-2">Profile Update</h1>
+                    <p className="text-slate-500 text-sm sm:text-base m-0">Update your hero section bio and social links.</p>
                 </div>
                 <button
                     onClick={handleSubmit}
                     disabled={saving}
-                    style={{ background: '#1d4ed8', color: 'white', padding: '0.75rem 1.5rem', borderRadius: '0.5rem', fontWeight: '600', border: 'none', cursor: 'pointer', display: 'flex', alignItems: 'center', gap: '0.5rem', transition: 'background 0.2s', opacity: saving ? 0.7 : 1 }}
+                    className={`flex items-center justify-center gap-2 bg-blue-700 text-white px-6 py-3 rounded-lg font-semibold transition-all shadow-sm ${saving ? 'opacity-70 cursor-not-allowed' : 'hover:bg-blue-800 hover:shadow shadow-blue-500/30'
+                        } w-full sm:w-auto`}
                 >
-                    {saving ? 'Saving...' : <><Save size={18} /> Save Changes</>}
+                    {saving ? 'Saving...' : <><Save size={20} /> Save Changes</>}
                 </button>
             </div>
 
-            <div style={{ background: 'white', padding: '2rem', borderRadius: '1rem', boxShadow: '0 4px 6px -1px rgba(0, 0, 0, 0.05)' }}>
-                <form style={{ display: 'flex', flexDirection: 'column', gap: '1.5rem' }}>
+            <div className="bg-white p-4 sm:p-6 md:p-8 rounded-2xl shadow-sm border border-slate-100">
+                <form className="flex flex-col gap-6">
 
-                    <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '1.5rem' }}>
-                        <div style={{ display: 'flex', flexDirection: 'column', gap: '0.5rem' }}>
-                            <label style={{ fontSize: '0.875rem', fontWeight: '600', color: '#334155' }}>Display Name</label>
-                            <input type="text" name="name" value={profile.name} onChange={handleChange} style={{ padding: '0.75rem', borderRadius: '0.5rem', border: '1px solid #cbd5e1', outline: 'none' }} />
+                    <div className="grid grid-cols-1 md:grid-cols-2 gap-4 sm:gap-6">
+                        <div className="flex flex-col gap-2">
+                            <label className="text-sm font-semibold text-slate-700">Display Name</label>
+                            <input type="text" name="name" value={profile.name} onChange={handleChange} className="w-full px-4 py-3 rounded-lg border border-slate-200 outline-none focus:border-blue-500 focus:ring-2 focus:ring-blue-100 transition-all bg-slate-50 focus:bg-white text-slate-900" />
                         </div>
-                        <div style={{ display: 'flex', flexDirection: 'column', gap: '0.5rem' }}>
-                            <label style={{ fontSize: '0.875rem', fontWeight: '600', color: '#334155' }}>Job Title badge</label>
-                            <input type="text" name="title" value={profile.title} onChange={handleChange} style={{ padding: '0.75rem', borderRadius: '0.5rem', border: '1px solid #cbd5e1', outline: 'none' }} />
+                        <div className="flex flex-col gap-2">
+                            <label className="text-sm font-semibold text-slate-700">Job Title badge</label>
+                            <input type="text" name="title" value={profile.title} onChange={handleChange} className="w-full px-4 py-3 rounded-lg border border-slate-200 outline-none focus:border-blue-500 focus:ring-2 focus:ring-blue-100 transition-all bg-slate-50 focus:bg-white text-slate-900" />
                         </div>
                     </div>
 
-                    <div style={{ display: 'flex', flexDirection: 'column', gap: '0.5rem' }}>
-                        <label style={{ fontSize: '0.875rem', fontWeight: '600', color: '#334155' }}>Bio Description (Paragraph 1)</label>
-                        <textarea name="bioPart1" value={profile.bioPart1} onChange={handleChange} rows={3} style={{ padding: '0.75rem', borderRadius: '0.5rem', border: '1px solid #cbd5e1', outline: 'none', resize: 'vertical' }} />
+                    <div className="flex flex-col gap-2">
+                        <label className="text-sm font-semibold text-slate-700">Bio Description (Paragraph 1)</label>
+                        <textarea name="bioPart1" value={profile.bioPart1} onChange={handleChange} rows={3} className="w-full px-4 py-3 rounded-lg border border-slate-200 outline-none focus:border-blue-500 focus:ring-2 focus:ring-blue-100 transition-all bg-slate-50 focus:bg-white text-slate-900 resize-y" />
                     </div>
 
-                    <div style={{ display: 'flex', flexDirection: 'column', gap: '0.5rem' }}>
-                        <label style={{ fontSize: '0.875rem', fontWeight: '600', color: '#334155' }}>Bio Description (Paragraph 2)</label>
-                        <textarea name="bioPart2" value={profile.bioPart2} onChange={handleChange} rows={3} style={{ padding: '0.75rem', borderRadius: '0.5rem', border: '1px solid #cbd5e1', outline: 'none', resize: 'vertical' }} />
+                    <div className="flex flex-col gap-2">
+                        <label className="text-sm font-semibold text-slate-700">Bio Description (Paragraph 2)</label>
+                        <textarea name="bioPart2" value={profile.bioPart2} onChange={handleChange} rows={3} className="w-full px-4 py-3 rounded-lg border border-slate-200 outline-none focus:border-blue-500 focus:ring-2 focus:ring-blue-100 transition-all bg-slate-50 focus:bg-white text-slate-900 resize-y" />
                     </div>
 
-                    <h3 style={{ fontSize: '1.25rem', fontWeight: 'bold', color: '#0f172a', margin: '1rem 0 0 0', borderBottom: '1px solid #e2e8f0', paddingBottom: '0.5rem' }}>Social & Action Links</h3>
+                    <div className="mt-4 pt-6 border-t border-slate-100">
+                        <h3 className="text-lg sm:text-xl font-bold text-slate-900 mb-6">Social & Action Links</h3>
 
-                    <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '1.5rem' }}>
-                        <div style={{ display: 'flex', flexDirection: 'column', gap: '0.5rem' }}>
-                            <label style={{ fontSize: '0.875rem', fontWeight: '600', color: '#334155' }}>Support Us URL (Paypal)</label>
-                            <input type="text" name="supportUrl" value={profile.supportUrl} onChange={handleChange} style={{ padding: '0.75rem', borderRadius: '0.5rem', border: '1px solid #cbd5e1', outline: 'none' }} />
-                        </div>
-                        <div style={{ display: 'flex', flexDirection: 'column', gap: '0.5rem' }}>
-                            <label style={{ fontSize: '0.875rem', fontWeight: '600', color: '#334155' }}>Explore Work URL</label>
-                            <input type="text" name="exploreUrl" value={profile.exploreUrl} onChange={handleChange} style={{ padding: '0.75rem', borderRadius: '0.5rem', border: '1px solid #cbd5e1', outline: 'none' }} />
-                        </div>
-                        <div style={{ display: 'flex', flexDirection: 'column', gap: '0.5rem' }}>
-                            <label style={{ fontSize: '0.875rem', fontWeight: '600', color: '#334155' }}>YouTube Link</label>
-                            <input type="text" name="youtubeUrl" value={profile.youtubeUrl} onChange={handleChange} style={{ padding: '0.75rem', borderRadius: '0.5rem', border: '1px solid #cbd5e1', outline: 'none' }} />
-                        </div>
-                        <div style={{ display: 'flex', flexDirection: 'column', gap: '0.5rem' }}>
-                            <label style={{ fontSize: '0.875rem', fontWeight: '600', color: '#334155' }}>Instagram Link</label>
-                            <input type="text" name="instagramUrl" value={profile.instagramUrl} onChange={handleChange} style={{ padding: '0.75rem', borderRadius: '0.5rem', border: '1px solid #cbd5e1', outline: 'none' }} />
-                        </div>
-                        <div style={{ display: 'flex', flexDirection: 'column', gap: '0.5rem' }}>
-                            <label style={{ fontSize: '0.875rem', fontWeight: '600', color: '#334155' }}>LinkedIn Link</label>
-                            <input type="text" name="linkedinUrl" value={profile.linkedinUrl} onChange={handleChange} style={{ padding: '0.75rem', borderRadius: '0.5rem', border: '1px solid #cbd5e1', outline: 'none' }} />
-                        </div>
-                        <div style={{ display: 'flex', flexDirection: 'column', gap: '0.5rem' }}>
-                            <label style={{ fontSize: '0.875rem', fontWeight: '600', color: '#334155' }}>Facebook Link</label>
-                            <input type="text" name="facebookUrl" value={profile.facebookUrl} onChange={handleChange} style={{ padding: '0.75rem', borderRadius: '0.5rem', border: '1px solid #cbd5e1', outline: 'none' }} />
+                        <div className="grid grid-cols-1 md:grid-cols-2 gap-4 sm:gap-6">
+                            <div className="flex flex-col gap-2">
+                                <label className="text-sm font-semibold text-slate-700">Support Us URL</label>
+                                <input type="text" name="supportUrl" value={profile.supportUrl} onChange={handleChange} className="w-full px-4 py-3 rounded-lg border border-slate-200 outline-none focus:border-blue-500 focus:ring-2 focus:ring-blue-100 transition-all bg-slate-50 focus:bg-white text-slate-900" placeholder="https://" />
+                            </div>
+                            <div className="flex flex-col gap-2">
+                                <label className="text-sm font-semibold text-slate-700">Explore Work URL</label>
+                                <input type="text" name="exploreUrl" value={profile.exploreUrl} onChange={handleChange} className="w-full px-4 py-3 rounded-lg border border-slate-200 outline-none focus:border-blue-500 focus:ring-2 focus:ring-blue-100 transition-all bg-slate-50 focus:bg-white text-slate-900" placeholder="https://" />
+                            </div>
+                            <div className="flex flex-col gap-2">
+                                <label className="text-sm font-semibold text-slate-700">YouTube Link</label>
+                                <input type="text" name="youtubeUrl" value={profile.youtubeUrl} onChange={handleChange} className="w-full px-4 py-3 rounded-lg border border-slate-200 outline-none focus:border-blue-500 focus:ring-2 focus:ring-blue-100 transition-all bg-slate-50 focus:bg-white text-slate-900" placeholder="https://" />
+                            </div>
+                            <div className="flex flex-col gap-2">
+                                <label className="text-sm font-semibold text-slate-700">Instagram Link</label>
+                                <input type="text" name="instagramUrl" value={profile.instagramUrl} onChange={handleChange} className="w-full px-4 py-3 rounded-lg border border-slate-200 outline-none focus:border-blue-500 focus:ring-2 focus:ring-blue-100 transition-all bg-slate-50 focus:bg-white text-slate-900" placeholder="https://" />
+                            </div>
+                            <div className="flex flex-col gap-2">
+                                <label className="text-sm font-semibold text-slate-700">LinkedIn Link</label>
+                                <input type="text" name="linkedinUrl" value={profile.linkedinUrl} onChange={handleChange} className="w-full px-4 py-3 rounded-lg border border-slate-200 outline-none focus:border-blue-500 focus:ring-2 focus:ring-blue-100 transition-all bg-slate-50 focus:bg-white text-slate-900" placeholder="https://" />
+                            </div>
+                            <div className="flex flex-col gap-2">
+                                <label className="text-sm font-semibold text-slate-700">Facebook Link</label>
+                                <input type="text" name="facebookUrl" value={profile.facebookUrl} onChange={handleChange} className="w-full px-4 py-3 rounded-lg border border-slate-200 outline-none focus:border-blue-500 focus:ring-2 focus:ring-blue-100 transition-all bg-slate-50 focus:bg-white text-slate-900" placeholder="https://" />
+                            </div>
                         </div>
                     </div>
 

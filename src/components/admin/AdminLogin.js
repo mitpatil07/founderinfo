@@ -19,43 +19,50 @@ const AdminLogin = ({ setToken }) => {
     };
 
     return (
-        <div style={{ minHeight: '100vh', display: 'flex', alignItems: 'center', justifyContent: 'center', background: '#f8fafc' }}>
-            <div style={{ background: 'white', padding: '3rem', borderRadius: '1rem', boxShadow: '0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04)', width: '100%', maxWidth: '400px' }}>
-                <div style={{ textAlign: 'center', marginBottom: '2rem' }}>
-                    <div style={{ background: '#eff6ff', width: '4rem', height: '4rem', borderRadius: '50%', display: 'flex', alignItems: 'center', justifyContent: 'center', margin: '0 auto 1rem auto' }}>
-                        <Lock style={{ color: '#1d4ed8' }} size={32} />
+        <div className="min-h-screen flex items-center justify-center bg-slate-50 p-4 sm:p-6 lg:p-8">
+            <div className="bg-white p-6 sm:p-8 md:p-10 rounded-2xl shadow-xl w-full max-w-md border border-slate-100">
+                <div className="text-center mb-8">
+                    <div className="bg-blue-50 w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4">
+                        <Lock className="text-blue-700 w-8 h-8" />
                     </div>
-                    <h2 style={{ fontSize: '1.5rem', fontWeight: 'bold', color: '#1e293b' }}>Admin Portal</h2>
-                    <p style={{ color: '#64748b' }}>Sign in to manage the website</p>
+                    <h2 className="text-2xl sm:text-3xl font-bold text-slate-900 mb-2">Admin Portal</h2>
+                    <p className="text-slate-500 text-sm sm:text-base">Sign in to manage the website</p>
                 </div>
 
-                {error && <div style={{ background: '#fee2e2', color: '#b91c1c', padding: '0.75rem', borderRadius: '0.5rem', marginBottom: '1rem', fontSize: '0.875rem', textAlign: 'center' }}>{error}</div>}
+                {error && (
+                    <div className="bg-red-50 text-red-600 p-3 rounded-lg mb-6 text-sm text-center border border-red-100">
+                        {error}
+                    </div>
+                )}
 
-                <form onSubmit={handleLogin} style={{ display: 'flex', flexDirection: 'column', gap: '1rem' }}>
-                    <div style={{ position: 'relative' }}>
-                        <User size={20} style={{ position: 'absolute', top: '50%', transform: 'translateY(-50%)', left: '1rem', color: '#94a3b8' }} />
+                <form onSubmit={handleLogin} className="space-y-4">
+                    <div className="relative">
+                        <User className="absolute top-1/2 -translate-y-1/2 left-4 text-slate-400 w-5 h-5" />
                         <input
                             type="text"
                             placeholder="Username"
                             value={username}
                             onChange={(e) => setUsername(e.target.value)}
-                            style={{ width: '100%', padding: '0.75rem 1rem 0.75rem 2.75rem', borderRadius: '0.5rem', border: '1px solid #cbd5e1', outline: 'none', appearance: 'none' }}
+                            className="w-full pl-11 pr-4 py-3 rounded-lg border border-slate-200 outline-none focus:border-blue-500 focus:ring-2 focus:ring-blue-100 transition-all bg-slate-50 focus:bg-white"
                             required
                         />
                     </div>
-                    <div style={{ position: 'relative' }}>
-                        <Lock size={20} style={{ position: 'absolute', top: '50%', transform: 'translateY(-50%)', left: '1rem', color: '#94a3b8' }} />
+                    <div className="relative">
+                        <Lock className="absolute top-1/2 -translate-y-1/2 left-4 text-slate-400 w-5 h-5" />
                         <input
                             type="password"
                             placeholder="Password"
                             value={password}
                             onChange={(e) => setPassword(e.target.value)}
-                            style={{ width: '100%', padding: '0.75rem 1rem 0.75rem 2.75rem', borderRadius: '0.5rem', border: '1px solid #cbd5e1', outline: 'none', appearance: 'none' }}
+                            className="w-full pl-11 pr-4 py-3 rounded-lg border border-slate-200 outline-none focus:border-blue-500 focus:ring-2 focus:ring-blue-100 transition-all bg-slate-50 focus:bg-white"
                             required
                         />
                     </div>
-                    <button type="submit" style={{ background: '#1d4ed8', color: 'white', padding: '0.75rem', borderRadius: '0.5rem', fontWeight: '600', border: 'none', cursor: 'pointer', display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '0.5rem', marginTop: '0.5rem', transition: 'background 0.2s' }} onMouseEnter={(e) => e.target.style.background = '#1e40af'} onMouseLeave={(e) => e.target.style.background = '#1d4ed8'}>
-                        Login <ArrowRight size={18} />
+                    <button
+                        type="submit"
+                        className="w-full bg-blue-700 text-white p-3 rounded-lg font-semibold flex items-center justify-center gap-2 mt-6 hover:bg-blue-800 transition-colors shadow-md shadow-blue-500/30"
+                    >
+                        Login <ArrowRight className="w-5 h-5" />
                     </button>
                 </form>
             </div>
